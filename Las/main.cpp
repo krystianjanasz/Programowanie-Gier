@@ -20,7 +20,9 @@ int main() {
     cout<<"SYMALACJA PLONACEGO LASU\n";
     cout<<"Wprowadz liczbe N, rozmiar twojego lasu bedzie rowny N na N:\n>> ";
     cin>>forestSize;
-    char forest[forestSize+2][forestSize+2];
+    char **forest;
+    forest = new char*[forestSize+2];
+    for(int i = 0; i <forestSize+2 ; ++i) forest[i] = new char[forestSize+2];
     //'^'-drzewa,'*'-plonie drzewo,'.'-martwe drzewo
     for(unsigned int j=0;j<forestSize+1;++j)
     {
@@ -63,7 +65,8 @@ int main() {
         }
         forest[y][x]='*';
     }
-    cout << "\x1B[2J\x1B[H";
+    //cout << "\x1B[2J\x1B[H";
+    system("CLS");
     cout<<"SYMALACJA PLONACEGO LASU\n";
     cout<<"Wprowadz prawdopodobienstwo zaplonu drzewa jesli drzewo obok plonie(w procentach)\n>> ";
     cin>>fireProb;
@@ -72,7 +75,8 @@ int main() {
         cout<<"Prawdopodobienstwo powinno byc z przedzialu <0,100>.\n>> ";
         cin>>fireProb;
     }
-    cout << "\x1B[2J\x1B[H";
+    //cout << "\x1B[2J\x1B[H";
+    system("CLS");
 
     cout<<"SYMALACJA PLONACEGO LASU\n";
     cout<<"Wprowadz prawdopodobienstwo samozaplonu drzewa(w procentach):\n>> ";
@@ -82,7 +86,8 @@ int main() {
         cout<<"Prawdopodobienstwo powinno byc z przedzialu <0,100>.\n>> ";
         cin>>selfIgnitionProb;
     }
-    cout << "\x1B[2J\x1B[H";
+    //cout << "\x1B[2J\x1B[H";
+    system("CLS");
 
     cout<<"SYMALACJA PLONACEGO LASU\n";
     cout<<"Wprowadz prawdopodobienstwo odrodzenia drzewa(w procentach):\n>> ";
@@ -93,7 +98,8 @@ int main() {
         cout<<"Prawdopodobienstwo powinno byc z przedzialu <0,100>.>> \n";
         cin>>rebirthProb;
     }
-    cout << "\x1B[2J\x1B[H";
+    //cout << "\x1B[2J\x1B[H";
+    system("CLS");
 
     cout<<"SYMALACJA PLONACEGO LASU\n";
     cout<<"Wprowadz liczbe generacji lasu:\n>> ";
@@ -103,14 +109,16 @@ int main() {
     for(unsigned int i=0; i<4;++i)
     {
         cout<<i<<"\n";
-        this_thread::sleep_for(chrono::seconds(1));
+        //this_thread::sleep_for(chrono::seconds(1));
     }
-    cout << "\x1B[2J\x1B[H";
-    char forestCopy[forestSize+2][forestSize+2];
+    //cout << "\x1B[2J\x1B[H";
+    system("CLS");
+    char **forestCopy;
+    forestCopy=new char*[forestSize+2];
+    for(int i = 0; i <forestSize+2 ; ++i) forestCopy[i] = new char[forestSize+2];;
     //PLONIE LAS
     for(unsigned int i=0; i<generation;++i)
     {
-        this_thread::sleep_for(chrono::seconds(1));
         //KOPIOWANIE LASU
         for(unsigned int j=0;j<forestSize+2;++j)
         {
@@ -194,7 +202,9 @@ int main() {
             cout<<"\n";
         }
         cout<<"Generacja "<<i<<"\n";
-        cout << "\x1B[2J\x1B[H";
+        this_thread::sleep_for(chrono::seconds(1));
+        //cout << "\x1B[2J\x1B[H";
+        system("CLS");
 
     }
     return 0;
